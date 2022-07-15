@@ -87,6 +87,11 @@ class ReCase {
 
   String _getPascalCase({String separator: ''}) {
     List<String> words = this._words.map(_upperCaseFirstLetter).toList();
+    words = words.map(_uppercaseRomanCharacter).toList();
+
+    // words but excluding the first word
+    List<String> wordsSublist = words.sublist(1, words.length);
+    words = [words[0], ...wordsSublist.map(_englishSpecialTerm)];
 
     return words.join(separator);
   }
@@ -108,6 +113,34 @@ class ReCase {
 
   String _upperCaseFirstLetter(String word) {
     return '${word.substring(0, 1).toUpperCase()}${word.substring(1).toLowerCase()}';
+  }
+
+  /// Uppercase letter if roman character is found.
+  String _uppercaseRomanCharacter(String word) {
+    // list of number in romans
+    List<String> romanNumerals = [
+      'I',
+      'II',
+      'III',
+      'IV',
+      'V',
+      'VI',
+      'VII',
+      'VIII'
+    ];
+
+    if (romanNumerals.contains(word.toUpperCase())) {
+      return word.toUpperCase();
+    }
+    return word;
+  }
+
+  String _englishSpecialTerm(String word) {
+    List<String> englishTerms = ['a', 'an', 'and', 'as', 'at', 'but', 'of'];
+    if (englishTerms.contains(word.toLowerCase())) {
+      return word.toLowerCase();
+    }
+    return word; // return untouched
   }
 }
 
