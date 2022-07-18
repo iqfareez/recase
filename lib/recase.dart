@@ -136,7 +136,16 @@ class ReCase {
   }
 
   String _englishSpecialTerm(String word) {
-    List<String> englishTerms = ['a', 'an', 'and', 'as', 'at', 'but', 'of'];
+    List<String> englishTerms = [
+      'a',
+      'an',
+      'and',
+      'as',
+      'at',
+      'but',
+      'of',
+      'for'
+    ];
     if (englishTerms.contains(word.toLowerCase())) {
       return word.toLowerCase();
     }
