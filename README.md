@@ -1,4 +1,13 @@
-## ReCase ##
+# ReCase
+
+## My changes
+
+- Optimize **Title Case**
+  - Roman character UPPERCASE
+  - Reserved keywords UPPERCASE
+  - English preposition lowercase
+
+## Original README
 
 Changes the case of the input text to the desire case convention.
 
@@ -21,17 +30,18 @@ String extensions are also available.
       print(sample.camelCase); // Prints 'justSomeSampleText'
       print(sample.constantCase); // Prints 'JUST_SOME_SAMPLE_TEXT'
     }
+
 _This feature is available in version 3.0.0, and requires at least Dart 2.6_
 
-
 Supports:
-* snake_case
-* dot.case
-* path/case
-* param-case
-* PascalCase
-* Header-Case
-* Title Case
-* camelCase
-* Sentence case
-* CONSTANT_CASE
+
+- snake_case
+- dot.case
+- path/case
+- param-case
+- PascalCase
+- Header-Case
+- Title Case
+- camelCase
+- Sentence case
+- CONSTANT_CASE

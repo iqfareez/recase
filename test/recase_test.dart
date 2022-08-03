@@ -120,6 +120,15 @@ void main() {
       expect(''.titleCase, equals(''));
     });
 
+    test('reserved keyword.', () {
+      expect('LANGUAGE FOR OCCUPATIONAL PURPOSES-ENM'.titleCase,
+          equals('Language for Occupational Purposes ENM'));
+    });
+
+    test('english special character.', () {
+      expect('A MAN AND A DOG'.titleCase, equals('A Man and a Dog'));
+    });
+
     test('from "${rcInput.originalText}".', () {
       expect(rcInput.titleCase, equals('This Is Some Sample Text You Dig?'));
     });

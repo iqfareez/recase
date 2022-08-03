@@ -88,10 +88,13 @@ class ReCase {
   String _getPascalCase({String separator: ''}) {
     List<String> words = this._words.map(_upperCaseFirstLetter).toList();
     words = words.map(_uppercaseRomanCharacter).toList();
+    words = words.map(_reservedWords).toList();
 
     // words but excluding the first word
-    List<String> wordsSublist = words.sublist(1, words.length);
-    words = [words[0], ...wordsSublist.map(_englishSpecialTerm)];
+    if (_words.isNotEmpty) {
+      List<String> wordsSublist = words.sublist(1, words.length);
+      words = [words[0], ...wordsSublist.map(_englishSpecialTerm)];
+    }
 
     return words.join(separator);
   }
@@ -135,6 +138,19 @@ class ReCase {
     return word;
   }
 
+  /// Reserved terms that always CAPS
+  String _reservedWords(String word) {
+    List<String> terms = [
+      'ENM',
+    ];
+
+    if (terms.contains(word.toUpperCase())) {
+      return word.toUpperCase();
+    }
+    return word; // return untouched
+  }
+
+  /// English terms that don't need capitalization
   String _englishSpecialTerm(String word) {
     List<String> englishTerms = [
       'a',
@@ -144,7 +160,9 @@ class ReCase {
       'at',
       'but',
       'of',
-      'for'
+      'for',
+      'to',
+      'in',
     ];
     if (englishTerms.contains(word.toLowerCase())) {
       return word.toLowerCase();
