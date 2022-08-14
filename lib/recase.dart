@@ -140,9 +140,7 @@ class ReCase {
 
   /// Reserved terms that always CAPS
   String _reservedWords(String word) {
-    List<String> terms = [
-      'ENM',
-    ];
+    List<String> terms = ['ENM', 'IT'];
 
     if (terms.contains(word.toUpperCase())) {
       return word.toUpperCase();
@@ -163,6 +161,7 @@ class ReCase {
       'for',
       'to',
       'in',
+      'the',
     ];
     if (englishTerms.contains(word.toLowerCase())) {
       return word.toLowerCase();

@@ -7,7 +7,17 @@
   - Reserved keywords UPPERCASE
   - English preposition lowercase
 
-## Original README
+## Contributing
+
+1. Fork this repository.
+1. Open file `lib/recase.dart`.
+1. Modify the entry in `_englishSpecialTerm` function. The list contains English prepositions that should be lowercase all the time, except when it is located at the beginning of a sentence.
+1. Or, modify the words in `_reservedWords` function. It is the phrase that has always been capitalized. Eg: IT.
+1. `romanNumerals`. Roman numerals. I guess no need to add too much numbers in this entry. However, if it is need, feel free to do so.
+1. Test and compare with https://convertcase.net/.
+1. Open a PR for your fixes.
+
+---
 
 Changes the case of the input text to the desire case convention.
 
