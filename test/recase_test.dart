@@ -140,6 +140,10 @@ void main() {
     test('from "${mockText}", using String extension.', () {
       expect(mockText.titleCase, equals('This Is Some Sample Text You Dig?'));
     });
+
+    test('from "test (michael yeoh)", phrase with brackets.', () {
+      expect("test (michael yeoh)".titleCase, equals('Test (Michael Yeoh)'));
+    });
   });
 
   group('camelCase', () {

@@ -70,7 +70,7 @@ class ReCase {
   /// Title Case
   String get titleCase => _getPascalCase(separator: ' ');
 
-  String _getCamelCase({String separator: ''}) {
+  String _getCamelCase({String separator = ''}) {
     List<String> words = this._words.map(_upperCaseFirstLetter).toList();
     if (_words.isNotEmpty) {
       words[0] = words[0].toLowerCase();
@@ -79,13 +79,13 @@ class ReCase {
     return words.join(separator);
   }
 
-  String _getConstantCase({String separator: '_'}) {
+  String _getConstantCase({String separator = '_'}) {
     List<String> words = this._words.map((word) => word.toUpperCase()).toList();
 
     return words.join(separator);
   }
 
-  String _getPascalCase({String separator: ''}) {
+  String _getPascalCase({String separator = ''}) {
     List<String> words = this._words.map(_upperCaseFirstLetter).toList();
     words = words.map(_uppercaseRomanCharacter).toList();
     words = words.map(_reservedWords).toList();
@@ -99,7 +99,7 @@ class ReCase {
     return words.join(separator);
   }
 
-  String _getSentenceCase({String separator: ' '}) {
+  String _getSentenceCase({String separator = ' '}) {
     List<String> words = this._words.map((word) => word.toLowerCase()).toList();
     if (_words.isNotEmpty) {
       words[0] = _upperCaseFirstLetter(words[0]);
@@ -108,14 +108,29 @@ class ReCase {
     return words.join(separator);
   }
 
-  String _getSnakeCase({String separator: '_'}) {
+  String _getSnakeCase({String separator = '_'}) {
     List<String> words = this._words.map((word) => word.toLowerCase()).toList();
 
     return words.join(separator);
   }
 
   String _upperCaseFirstLetter(String word) {
-    return '${word.substring(0, 1).toUpperCase()}${word.substring(1).toLowerCase()}';
+    if (word.isEmpty) {
+      return word;
+    }
+    String firstLetter = word[0].toUpperCase();
+
+    // handled issue https://github.com/iqfareez/iium_schedule/issues/76
+    if (word.length > 1) {
+      if (firstLetter == '(' || firstLetter == '[' || firstLetter == '{') {
+        if (word.length > 2) {
+          return '$firstLetter${word[1].toUpperCase()}${word.substring(2).toLowerCase()}';
+        } else {
+          return '$firstLetter${word[1].toUpperCase()}';
+        }
+      }
+    }
+    return '$firstLetter${word.substring(1).toLowerCase()}';
   }
 
   /// Uppercase letter if roman character is found.

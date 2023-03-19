@@ -6,6 +6,7 @@
   - Roman character UPPERCASE
   - Reserved keywords UPPERCASE
   - English preposition lowercase
+  - Fix issue where character after parenthesis is not capitalized in Title Case
 
 ## Contributing
 
@@ -13,7 +14,7 @@
 1. Open file `lib/recase.dart`.
 1. Modify the entry in `_englishSpecialTerm` function. The list contains English prepositions that should be lowercase all the time, except when it is located at the beginning of a sentence.
 1. Or, modify the words in `_reservedWords` function. It is the phrase that has always been capitalized. Eg: IT.
-1. `romanNumerals`. Roman numerals. I guess no need to add too much numbers in this entry. However, if it is need, feel free to do so.
+1. `romanNumerals`. Roman numerals. I guess no need to add too many numbers in this entry. However, if it is needede, feel free to do so.
 1. Use online tools like https://convertcase.net/ to verify the Title Case.
 1. Run test in `test/recase_test.dart` (Only the **Title Case** group).
 1. Open a PR for your fixes.
