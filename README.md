@@ -1,3 +1,6 @@
+> [!WARNING]
+> This repo is now archived. The ReCase library is moved to the [IIUM Schedule's repository](https://github.com/iiumschedule/iium_schedule/tree/master/packages/recase).
+
 # ReCase
 
 ## My changes
